@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杖剑传说-逐风之羽公会</title>
+    <style>
+ body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+            font-family: "Times New Roman", "SimSun", serif;
+        }
+        #time {
+            font-size: 16px;
+            color: #333;
+            width: 320px;
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        /* 活动容器 */
+        #activityBox {
+            width: 400px;
+        }
+        .activity-item {
+            padding: 10px 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+        }
+        /* 当前生效 蓝色 */
+        .activity-active {
+            background: #e6f0ff;
+            border: 1px solid #4080ff;
+            color: #004099;
+        }
+        /* 未来活动 灰色 */
+        .activity-future {
+            background: #eeeeee;
+            border: 1px solid #bbbbbb;
+            color: #777777;
+        }
+        .type-tag {
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .day-info {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        /* 新增备注样式 */
+.remark {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.remark-label {
+  font-weight: bold;
+}
+.count-down {
+  margin: 4px 0;
+  font-size: 12px;
+  color: #993300;
+  font-weight: bold;
+}
+.remark {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.remark-label {
+  font-weight: bold;
+}
+    </style>
+</head>
+<body>
+    <!-- 欢迎 + 区服 + 开服时间 -->
+    <div style="text-align: right; font-size:13px; color: #333;"><text>欢迎，</text><text style="color:#0800ff">逐风之羽</text>服务器的玩家，<text id="time" class="lines_right"></text></div>
+    <div id="activityBox"></div>
+    <!--页尾-->
+    <div style="text-align:center;font-size:13px; color: #333;"><text>Copyright &copy; 2026 逐风之羽-零号秩序公会管理组 制作本网页<br>Copyright &copy; 2025-2026 仗剑传说 All Rights Reserved.</text></div>
+
+    <!-- js 声明区域 -->
+
+    <script src="js/TimeMode.js"></script>
+    <script src="js/TimeLine.js"></script>
+</body>
+</html>
