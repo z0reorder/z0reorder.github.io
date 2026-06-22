@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S1赛季原初之星计算器</title>
+    <style>
+ body{display:flex;flex-direction:column;align-items:center;min-height:100vh;margin:0;padding:20px;box-sizing:border-box;background-color:#f0f0f0;font-family:"Microsoft YaHei","SimSun",serif}#time{font-size:16px;color:#333;width:320px;text-align:right;margin-bottom:20px}#activityBox{width:420px}.activity-item{padding:10px 12px;margin:8px 0;border-radius:6px}.activity-active{background:#e6f0ff;border:1px solid #4080ff;color:#004099}.activity-future{background:#eeeeee;border:1px solid #bbbbbb;color:#777777}.type-tag{font-weight:bold;margin-right:8px}.day-info{font-size:12px;margin-top:4px}.remark{margin-top:6px;font-size:12px;line-height:1.6}.remark-label{font-weight:bold}.count-down{margin:4px 0;font-size:12px;color:#993300;font-weight:bold}.calc-card{width:420px;background:#fff;padding:16px;border-radius:8px;box-shadow:0 1px 4px #ccc;margin-bottom:16px}.row{display:flex;gap:8px;margin:8px 0;align-items:center}label{width:70px}input,select{flex:1;padding:6px;border:1px solid #ccc;border-radius:4px}button{padding:7px 12px;background:#4080ff;color:#fff;border:none;border-radius:4px;cursor:pointer;margin:4px}button.gray{background:#999}button.red{background:#e64340}.result-box{margin-top:12px;padding:10px;background:#f7fbff;border:1px solid #b3d8ff;border-radius:6px}.danger{color:#e64340;font-weight:bold}.success{color:#00994c;font-weight:bold}.import-divider{margin:10px 0;text-align:center;color:#888}
+    </style>
+</head>
+<body>
+        <!-- 欢迎 + 区服 + 开服时间 -->
+    <div style="text-align: right; font-size:13px; color: #333;margin-bottom:10px;">
+        <text>欢迎，</text>
+        <text style="color:#0800ff">逐风之羽</text>服务器的玩家
+        <text id="time" class="lines_right"></text>
+    </div>
+
+    <!--计算部分-->
+    <div id="activityBox">
+        <div class="calc-card">
+            <h3>一、选择目标档位（S1计划追档）</h3>
+            <div class="row">
+                <label>目标档位：</label>
+                <select id="targetGear">
+                    <option value="200">200档 | 原初之星201</option>
+                    <option value="176">176档 | 原初之星176</option>
+                    <option value="152">152档 | 原初之星152</option>
+                    <option value="128">128档 | 原初之星128</option>
+                    <option value="104">104档 | 原初之星104</option>
+                </select>
+                <button onclick="saveTargetGear()">保存目标</button>
+            </div>
+            <div class="remark">
+                <span class="remark-label">档位规则：</span>
+                <br>人物/装备/技能/宠物：赛季等级 = 结算等级 - 100
+                <br>遗物：赛季等级 = 结算等级 - 10
+            </div>
+            <div id="targetDesc" class="remark count-down"></div>
+        </div>
+
+        <div class="calc-card">
+            <h3>二、填写当前结算等级</h3>
+            <div class="row">
+                <label>人物结算：</label>
+                <input type="number" min="0" id="nowPerson" placeholder="当前人物结算等级">
+            </div>
+            <div class="row">
+                <label>装备结算：</label>
+                <input type="number" min="0" id="nowEquip" placeholder="当前装备结算等级">
+            </div>
+            <div class="row">
+                <label>遗物结算：</label>
+                <input type="number" min="0" id="nowRelic" placeholder="当前遗物结算等级">
+            </div>
+            <div class="row">
+                <label>技能结算：</label>
+                <input type="number" min="0" id="nowSkill" placeholder="当前技能结算等级">
+            </div>
+            <div class="row">
+                <label>宠物结算：</label>
+                <input type="number" min="0" id="nowPet" placeholder="当前宠物结算等级">
+            </div>
+            <div style="text-align:center;margin-top:8px;">
+                <button onclick="calcGap()">计算差距（自动保存）</button>
+                <button onclick="saveNowData()">手动保存当前数据</button>
+            </div>
+            <div class="result-box" id="calcResult"></div>
+        </div>
+
+        <div class="calc-card">
+            <h3>三、数据导入导出</h3>
+            <div class="row">
+                <label>游戏用户名：</label>
+                <input type="text" id="userName" placeholder="输入你的游戏昵称">
+            </div>
+            <div style="text-align:center;margin-top:8px;">
+                <button onclick="exportJson()">导出JSON存档</button>
+                <button class="gray" onclick="openImportPanel()">打开导入面板</button>
+                <button class="red" onclick="clearAllCache()">清空本地缓存</button>
+            </div>
+            <!-- 双导入容器，默认隐藏 -->
+            <div id="importWrap" style="margin-top:12px;display:none;border-top:1px solid #ddd;padding-top:12px;">
+                <div><strong>导入方案1：粘贴JSON文本</strong></div>
+                <textarea id="importText" style="width:100%;height:80px;margin-top:6px;" placeholder="粘贴导出的完整JSON文本"></textarea>
+                <div style="text-align:center;margin-top:6px;">
+                    <button onclick="importJson()">确认粘贴导入</button>
+                </div>
+
+                <div class="import-divider">—————— 或 ——————</div>
+
+                <div><strong>导入方案2：选择本地JSON文件</strong></div>
+                <input type="file" id="importFile" accept=".json" style="margin-top:6px;width:100%;">
+
+                <div style="text-align:center;margin-top:10px;">
+                    <button class="gray" onclick="closeImportPanel()">关闭导入面板</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--页尾-->
+    <div style="text-align:center;font-size:13px; color: #333;margin-top:20px;">
+        <text>页面制作:杖剑传说零号秩序公会</text>
+    </div>
+
+    <!-- js 声明区域 -->
+    <script src="/js/TimeMode.js?Ver=100&updatetime=202606211510"></script>
+    <script src="/js/S1star.js?Ver=103&updatetime=202606221441"></script>
+</body>
+</html>
