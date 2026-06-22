@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S1赛季原初之星计算器</title>
     <style>
- body{display:flex;flex-direction:column;align-items:center;min-height:100vh;margin:0;padding:20px;box-sizing:border-box;background-color:#f0f0f0;font-family:"Microsoft YaHei","SimSun",serif}#time{font-size:16px;color:#333;width:320px;text-align:right;margin-bottom:20px}#activityBox{width:420px}.activity-item{padding:10px 12px;margin:8px 0;border-radius:6px}.activity-active{background:#e6f0ff;border:1px solid #4080ff;color:#004099}.activity-future{background:#eeeeee;border:1px solid #bbbbbb;color:#777777}.type-tag{font-weight:bold;margin-right:8px}.day-info{font-size:12px;margin-top:4px}.remark{margin-top:6px;font-size:12px;line-height:1.6}.remark-label{font-weight:bold}.count-down{margin:4px 0;font-size:12px;color:#993300;font-weight:bold}.calc-card{width:420px;background:#fff;padding:16px;border-radius:8px;box-shadow:0 1px 4px #ccc;margin-bottom:16px}.row{display:flex;gap:8px;margin:8px 0;align-items:center}label{width:70px}input,select{flex:1;padding:6px;border:1px solid #ccc;border-radius:4px}button{padding:7px 12px;background:#4080ff;color:#fff;border:none;border-radius:4px;cursor:pointer;margin:4px}button.gray{background:#999}button.red{background:#e64340}.result-box{margin-top:12px;padding:10px;background:#f7fbff;border:1px solid #b3d8ff;border-radius:6px}.danger{color:#e64340;font-weight:bold}.success{color:#00994c;font-weight:bold}.import-divider{margin:10px 0;text-align:center;color:#888}
+ body{display:flex;flex-direction:column;align-items:center;min-height:100vh;margin:0;padding:20px;box-sizing:border-box;background-color:#f0f0f0;font-family:"Microsoft YaHei","SimSun",serif}#time{font-size:13px;color:#333;width:320px;text-align:right;margin-bottom:20px}#activityBox{width:420px}.activity-item{padding:10px 12px;margin:8px 0;border-radius:6px}.activity-active{background:#e6f0ff;border:1px solid #4080ff;color:#004099}.activity-future{background:#eeeeee;border:1px solid #bbbbbb;color:#777777}.type-tag{font-weight:bold;margin-right:8px}.day-info{font-size:12px;margin-top:4px}.remark{margin-top:6px;font-size:12px;line-height:1.6}.remark-label{font-weight:bold}.count-down{margin:4px 0;font-size:12px;color:#993300;font-weight:bold}.calc-card{width:420px;background:#fff;padding:16px;border-radius:8px;box-shadow:0 1px 4px #ccc;margin-bottom:16px}.row{display:flex;gap:8px;margin:8px 0;align-items:center}label{width:70px}input,select{flex:1;padding:6px;border:1px solid #ccc;border-radius:4px}button{padding:7px 12px;background:#4080ff;color:#fff;border:none;border-radius:4px;cursor:pointer;margin:4px}button.gray{background:#999}button.red{background:#e64340}.result-box{margin-top:12px;padding:10px;background:#f7fbff;border:1px solid #b3d8ff;border-radius:6px}.danger{color:#e64340;font-weight:bold}.success{color:#00994c;font-weight:bold}.import-divider{margin:10px 0;text-align:center;color:#888}
     </style>
 </head>
 <body>
@@ -15,11 +15,11 @@
         <text style="color:#0800ff">逐风之羽</text>服务器的玩家
         <text id="time" class="lines_right"></text>
     </div>
-
+<h1>S1赛季原初之星计算器</h1>
     <!--计算部分-->
     <div id="activityBox">
         <div class="calc-card">
-            <h3>一、选择目标档位（S1计划追档）</h3>
+            <h3>一、请选择目标档位</h3>
             <div class="row">
                 <label>目标档位：</label>
                 <select id="targetGear">
