@@ -31,7 +31,7 @@ const activityList = [
   {startDay: 25, lastDay: 20, type: 2, title: "限时地图：鲸背岛", remark: "核心奖励：随机宝石" },
   {startDay: 25, lastDay: 20, type: 2, title: "百鬼夜行", remark: "核心奖励：遗器等" },
   // 限时活动（与现实联动）
-  {startDay: 29, lastDay: 7, type: 2, title: "[世界杯活动]", remark: "伙伴转盘：悦动·秦、致胜·卡尔\n幻装：最佳前锋\n【没有公告结束时间，因为程序稳定需要写个结束日期\n会及时更新】"},
+  {startDay: 29, lastDay: 14, type: 2, title: "[世界杯活动] 坎斯汀杯" , remark: "\n伙伴转盘：悦动·秦、致胜·卡尔\n幻装：最佳前锋、逐梦绿荫\n转盘卷*20"},
   {startDay: 29, lastDay: 14, type: 2, title: "巡礼之证第三期", remark: "核心奖励：龙之国第一套遗器-祥云如意（光亲和+攻击%）" },
   {startDay: 29, lastDay: 7, type: 2, title: "秘宝大作战第四期", remark: "核心奖励：原初宝石（不推荐）" },
   {startDay: 29, lastDay: 7, type: 2, title: "菲涅克的谜题第一期", remark: "核心奖励：随机材料" },
