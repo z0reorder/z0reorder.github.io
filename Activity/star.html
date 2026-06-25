@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原初之星对照表</title>
+    <style>
+        body{display:flex;flex-direction:column;align-items:center;min-height:100vh;margin:0;padding:20px;box-sizing:border-box;background-color:#f0f0f0;font-family:"Times New Roman","SimSun",serif}
+        #time{font-size:13px;color:#333;width:320px;text-align:right;margin-bottom:20px}
+        #activityBox{width:400px}
+        .activity-item{padding:10px 12px;margin:8px 0;border-radius:6px}
+        .activity-active{background:#e6f0ff;border:1px solid #4080ff;color:#004099}
+        .activity-future{background:#eeeeee;border:1px solid #bbbbbb;color:#777777}
+        .type-tag{font-weight:bold;margin-right:8px}
+        .day-info{font-size:12px;margin-top:4px}
+        .remark{margin-top:6px;font-size:12px;line-height:1.6}
+        .remark-label{font-weight:bold}
+        .count-down{margin:4px 0;font-size:12px;color:#993300;font-weight:bold}
+        .remark{margin-top:6px;font-size:12px;line-height:1.6}
+        .remark-label{font-weight:bold}
+
+        /* 原初之星专属样式 */
+        #starBox{width:400px;margin-top:30px}
+        .star-item{padding:12px 15px;margin:8px 0;border-radius:6px;color:#fff;/* 字体默认白色，确保与背景对比 */display:flex;justify-content:space-between;align-items:center;}
+        .star-text{font-size:15px;}
+        .star-value{font-weight:bold;font-size:16px;}
+    </style>
+</head>
+<body>
+    <div style="text-align: right; font-size:13px; color: #333;margin-bottom:10px;">
+        <text>欢迎，</text>
+        <text style="color:#0800ff">逐风之羽</text>服务器的玩家
+        <text id="time" class="lines_right"></text>
+    </div>
+<h1>原初之星对照表</h1>
+    <div id="activityBox"></div>
+    <!-- 原初之星面板容器 -->
+    <div id="starBox"></div>
+
+    <!-- 外部JS引入（建议将star逻辑单独放在starLogic.js） -->
+    <script src="/js/star.js?Ver=100&updatetime=202606250000"></script>
+    <script src="/js/TimeMode.js?Ver=110&updatetime=202606250000"></script>
+</body>
+</html>
