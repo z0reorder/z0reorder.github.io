@@ -6,7 +6,8 @@
 // remark：活动备注，换行用 \n 分隔
 const activityList = [
     // 截止S1赛季
-  {startDay: 1, lastDay: -1, type: 1, title: "副本-【森之国】世界之树", remark: "地图解锁：森之国五-世界树\n战力要求：【简单：无限制】、【困难：3.6万】" },
+  {startDay: 0, lastDay: -1, type: 1, title: "提示S1（赛季开启前）", remark: "\n1、职业等级到达转职要求等级停止抽取技能\n2、秘境素材囤好，90级使用\n3、不要花晨星抽技能和宠物" },
+  {startDay: 1, lastDay: -1, type: 1, title: "副本-【森之国】世界之树", remark: "\n6月1号打两次不领奖励之后购买2次挑战次数\n（之后就不要碰了，即将开启【山之国】机神山副本）\n地图解锁：森之国五-世界树\n战力要求：【简单：无限制】、【困难：3.6万】" },
   {startDay: 1, lastDay: -1, type: 1, title: "幻想阶梯【爬塔】", remark: "地图解锁：森之国二-月影之森" },
   {startDay: 1, lastDay: -1, type: 1, title: "素材秘境", remark: "地图解锁：森之国二-月影之森" },
   {startDay: 1, lastDay: -1, type: 1, title: "公会", remark: "解锁等级：Lv15" },
@@ -31,7 +32,6 @@ const activityList = [
    {startDay: 23, lastDay: -1, type: 1, title: "宝石1孔", remark: "解锁等级：100\n开启宝石系统" },
   {startDay: 25, lastDay: 20, type: 2, title: "限时地图：鲸背岛", remark: "核心奖励：随机宝石" },
   {startDay: 25, lastDay: 20, type: 2, title: "百鬼夜行", remark: "核心奖励：遗器等" },
-  // 限时活动（与现实联动）
 
   {startDay: 29, lastDay: 14, type: 2, title: "巡礼之证第三期", remark: "核心奖励：龙之国第一套遗器-祥云如意（光亲和+攻击%）" },
   {startDay: 29, lastDay: 7, type: 2, title: "秘宝大作战第四期", remark: "核心奖励：原初宝石（不推荐）" },
