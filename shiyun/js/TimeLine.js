@@ -6,6 +6,7 @@
 // remark：活动备注，换行用 \n 分隔
 const activityList = [
     // 截止S1赛季
+ 
   {startDay: 0, lastDay: -1, type: 1, title: "提示S1（赛季开启前）", remark: "\n1、职业等级到达转职要求等级停止抽取技能\n2、秘境素材囤好，90级使用\n3、不要花晨星抽技能和宠物" },
   {startDay: 1, lastDay: -1, type: 1, title: "副本-【森之国】世界之树", remark: "\n6月1号打两次不领奖励之后购买2次挑战次数\n（之后就不要碰了，即将开启【山之国】机神山副本）\n地图解锁：森之国五-世界树\n战力要求：【简单：无限制】、【困难：3.6万】" },
   {startDay: 1, lastDay: -1, type: 1, title: "幻想阶梯【爬塔】", remark: "地图解锁：森之国二-月影之森" },
@@ -66,6 +67,48 @@ const activityList = [
 
 ];
 
+// 计算目标时间（开服第N天8点）与当前时间的时间差（秒）
+function calculateTimeDiff(targetOpenDay) {
+  // 获取开服时间（getTime()返回开服第几天，需结合开服基准时间计算）
+  const openBaseTime = new Date(getServerOpenTime()); // 需确保getServerOpenTime返回开服当天8点的时间戳/Date对象
+  // 计算目标日期：开服第targetOpenDay天的8点
+  const targetTime = new Date(openBaseTime);
+  targetTime.setDate(targetTime.getDate() + (targetOpenDay - 1)); // 开服第1天就是基准日，第2天+1天，以此类推
+  targetTime.setHours(8, 0, 0, 0); // 固定8点
+
+  // 当前时间
+  const now = new Date();
+  // 计算时间差（秒）
+  return Math.floor((targetTime - now) / 1000);
+}
+
+// 格式化倒计时（秒）为 "XX天XX时XX分" 格式（天数>1才显示天，否则不显示）
+function formatCountdown(seconds) {
+  if (seconds <= 0) return "0时0分";
+
+  const days = Math.floor(seconds / 86400);
+  const hours = Math.floor((seconds % 86400) / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+
+  let result = "";
+  // 天数>1才显示天
+  if (days > 1) {
+    result += `${days}天`;
+  }
+  // 拼接小时和分钟
+  result += `${hours}时${minutes}分`;
+
+  return result;
+}
+
+// 补全：获取开服基准时间（需根据实际项目调整，这里假设getTime()返回的是开服天数，需关联到具体时间）
+// 注意：实际项目中需要替换为真实的开服时间获取逻辑（比如从后端接口/配置读取）
+function getServerOpenTime() {
+  // 示例：假设开服时间是2024-01-01 08:00:00，需替换为真实值
+  // 实际场景中，该值应该是固定的，或从配置中读取
+  return new Date("2026-06-29T08:00:00");
+}
+
 // 渲染活动列表主函数
 function renderActivity() {
   // 调用TimeMode.js获取当前开服天数
@@ -79,13 +122,13 @@ function renderActivity() {
 
   activityList.forEach(item => {
     const {startDay, lastDay, title, type, remark } = item;
-    let endDay = lastDay === -1 ? Infinity :startDay + lastDay - 1;
+    let endDay = lastDay === -1 ? Infinity : startDay + lastDay - 1;
 
     // 过期直接跳过
     if (nowOpenDay > endDay) return;
 
     // 区分样式
-    let className = nowOpenDay <startDay ? "activity-future" : "activity-active";
+    let className = nowOpenDay < startDay ? "activity-future" : "activity-active";
     const typeText = type === 1 ? "【永久】" : "【限时】";
 
     // 时间描述
@@ -96,6 +139,20 @@ function renderActivity() {
     // 备注处理：把 \n 转换成 <br> 实现网页换行
     const remarkHtml = remark.replaceAll("\n", "<br>");
 
+    // 倒计时相关
+    let countdownHtml = "";
+    if (nowOpenDay < startDay) {
+      // 未开启：计算开启倒计时
+      const diffSeconds = calculateTimeDiff(startDay);
+      const countdownText = formatCountdown(diffSeconds);
+      countdownHtml = `<div class="countdown open-countdown">开启倒计时：${countdownText}</div>`;
+    } else if (type === 2 && lastDay !== -1) {
+      // 已开启的限时活动：计算结束倒计时
+      const diffSeconds = calculateTimeDiff(endDay + 1); // 结束日是开服endDay天，结束时间是endDay+1天的8点
+      const countdownText = formatCountdown(diffSeconds);
+      countdownHtml = `<div class="countdown end-countdown">结束倒计时：${countdownText}</div>`;
+    }
+
     htmlStr += `
       <div class="activity-item ${className}">
         <span class="type-tag">${typeText}</span>
@@ -105,6 +162,7 @@ function renderActivity() {
           <span class="remark-label">备注：</span>
           ${remarkHtml}
         </div>
+        ${countdownHtml}
       </div>
     `;
   });
@@ -112,6 +170,7 @@ function renderActivity() {
   container.innerHTML = htmlStr;
 }
 
+// 页面加载完成后渲染
 document.addEventListener("DOMContentLoaded", renderActivity);
-// 每分钟自动刷新
-setInterval(renderActivity, 60000);
+// 每秒刷新（倒计时需要实时更新，原1分钟刷新改为1秒）
+setInterval(renderActivity, 1000);
