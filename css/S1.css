@@ -1,0 +1,41 @@
+/* S1页面专属样式 */
+.copy-box {
+    margin: 24px 0;
+    padding: 12px;
+    border: 1px solid #b8d8dd;
+    border-radius: 8px;
+    background: #f7ffff;
+}
+.copy-title {
+    font-weight: bold;
+    font-size: 21px;
+    margin: 8px 0;
+}
+.copy-img-wrap {
+    margin: 10px 0 16px;
+}
+.difficulty-item {
+    margin: 10px 0;
+}
+.difficulty-name {
+    font-weight: bold;
+    font-size: 19px;
+}
+.power-text {
+    font-size: 17px;
+}
+.rate-block {
+    margin: 8px 0;
+    padding: 6px;
+    background: #fff;
+    border-left: 4px solid #66b9cc;
+}
+.rate-title {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+.comment-text {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed #ccc;
+}

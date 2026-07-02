@@ -35,7 +35,7 @@ const activityList = [
   {startDay: 29, lastDay: 14, type: 2, title: "巡礼之证第三期", remark: "核心奖励：龙之国第一套遗器-祥云如意（光亲和+攻击%）" },
   {startDay: 29, lastDay: 7, type: 2, title: "秘宝大作战第四期", remark: "核心奖励：原初宝石（不推荐）" },
   {startDay: 29, lastDay: 7, type: 2, title: "菲涅克的谜题第一期", remark: "核心奖励：随机材料" },
-  {startDay: 32, lastDay: -1, type: 1, title: "副本-【泽之国】黄泉阁", remark: "解锁等级：100\n战力要求：【简单：225万】、【困难：275万】、【噩梦：390万】 【炼狱:620】" },
+  {startDay: 32, lastDay: -1, type: 1, title: "副本-【泽之国】黄泉阁", remark: "解锁等级：100\n战力要求：【简单：225万】、【困难：275万】、【噩梦：390万】 【炼狱:620万】" },
   {startDay: 36, lastDay: 7, type: 2, title: "秘宝大作战第六期", remark: "核心奖励：自选奇迹遗物箱·泽（不推荐）" },
   {startDay: 36, lastDay: 7, type: 2, title: "宾果抽抽乐第二期", remark: "核心奖励：材料？" },
   {startDay: 43, lastDay: 7, type: 2, title: "秘宝大作战第七期", remark: "核心奖励：幸运神像（不推荐）" },
@@ -97,7 +97,7 @@ function formatCountdown(seconds) {
 // 注意：实际项目中需要替换为真实的开服时间获取逻辑（比如从后端接口/配置读取）
 function getServerOpenTime() {
   //
-  // 
+  //
   return new Date("2026-05-28T08:00:00");
 }
 

@@ -1,0 +1,97 @@
+body{
+    font-family:'Times New Roman', "仿宋_GB2312", "FangSong", "宋体", SimSun, serif;
+    font-size:20px;
+    color:#000;
+    background-color: honeydew;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+h1{
+    font-size:22px;
+    color:#1d1d1d;
+    font-family:'Times New Roman', "黑体", SimHei, sans-serif;
+    text-align: center;
+}
+.center{
+    text-align: center;
+}
+.left{
+    text-align: left;
+}
+.right{
+    text-align: right;
+}
+.color_Red{
+    color: #ff0000;
+}
+.color_Blue{
+    color: #0000ff;
+}
+/*自适应图片 居中*/
+img{
+    max-width: 75%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px;
+}
+
+/* ========== 全局折叠面板通用样式 ========== */
+.fold-btn {
+    width: 100%;
+    padding: 8px 12px;
+    margin: 6px 0;
+    font-size: 18px;
+    background: #e8f4f8;
+    border: 1px solid #99cde0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.fold-btn:hover {
+    background: #d0eaf3;
+}
+.fold-content {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    display: none;
+}
+.fold-content.show {
+    display: block;
+}
+
+/* ========== 移动端平板电脑自适应基础 ========== */
+/*手机竖屏*/
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 16px;
+        padding: 6px;
+    }
+    h1 {
+        font-size: 19px;
+    }
+    img {
+        max-width: 92%;
+    }
+    .fold-btn {
+        font-size: 15px;
+    }
+}
+/*平板横屏/小电脑*/
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    body {
+        font-size: 18px;
+    }
+    img {
+        max-width: 85%;
+    }
+}
+/*大屏电脑*/
+@media screen and (min-width: 1201px) {
+    body {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!--
+    心の羁绊，为梦想而努力
+    月桂工作室
+    更新日期：2026年6月23日
+    版本号：102
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>初始赛季&S1赛季副本信息</title>
+    <!-- 全局公共CSS -->
+    <link rel="stylesheet" href="/css/mian.css?Ver=100&updatetime=202607020000">
+    <!-- S1页面独立CSS -->
+    <link rel="stylesheet" href="/css/S1.css?Ver=100&updatetime=202607020000">
+</head>
+<body>
+    <h1>初始赛季&S1赛季副本信息</h1>
+    <button onclick="goBack()" style="margin-bottom:20px;">返回上一页</button>
+    <div id="copyContainer"></div>
+
+    <script>
+        // ========== 副本数据源配置区（全新结构：Drop数组 + [[概率,数量]]格式） ==========
+        const copyData = [
+            {
+                id: "01sjs",
+                copyName: "森之国 世界树副本",
+                imgSrc: "/img/Ins/01sjs.png?Ver=100&updatetime=202607020000",
+                difficultyList: [
+                    {
+                        diffName: "简单",
+                        needPower: "开启战力：无",
+                        Drop: ["随机猛兽装备【金】", "随机猛兽装备【紫】"],
+                        rateList: [
+                            {
+                                level: "S",
+                                drops: [[50, 1], [50, 1]],
+                                comment: "新手还是有难度的"
+                            },
+                            {
+                                level: "A",
+                                drops: [[35, 1], [65, 1]],
+                                comment: "难度一般"
+                            },
+                            {
+                                level: "B",
+                                drops: [[30, 1], [70, 1]],
+                                comment: "QAQ，又寄了"
+                            },
+                            {
+                                level: "C",
+                                drops: [[15, 1], [85, 1]],
+                                comment: "QAQ，又寄了"
+                            },
+                            {
+                                level: "D",
+                                drops: [[0, 0], [100, 1]],
+                                comment: "QAQ，又寄了"
+                            }
+                        ]
+                    },
+                    {
+                        diffName: "困难",
+                        needPower: "开启战力：3.6万，S评级建议4.5万以上",
+                        Drop: ["随机猛兽装备【金】", "随机猛兽装备【紫】"],
+                        rateList: [
+                            {
+                                level: "S",
+                                drops: [[100, 1], [0, 0]],
+                                comment: "新手还是很有难度的"
+                            },
+                            {
+                                level: "A",
+                                drops: [[85, 1], [15, 1]],
+                                comment: "新手还是有难度的"
+                            },
+                            {
+                                level: "B",
+                                drops: [[70, 1], [30, 1]],
+                                comment: "QAQ，又寄了"
+                            },
+                            {
+                                level: "C",
+                                drops: [[65, 1], [53, 1]],
+                                comment: "QAQ，又寄了"
+                            },
+                            {
+                                level: "D",
+                                drops: [[50, 1], [50, 1]],
+                                comment: "QAQ，又寄了"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: "02jss",
+                copyName: "山之国 机神山副本",
+                imgSrc: "/img/Ins/02jss.png?Ver=100&updatetime=202607020000",
+                difficultyList: [
+                    {
+                        diffName: "简单",
+                        needPower: "开启战力：无限制，S评级建议10万以上",
+                        Drop: ["熔铸碎片【金】", "随机熔铸装备【金】"],
+                        rateList: [
+                            {
+                                level: "S",
+                                drops: [[95, 8], [5, 1]],
+                                comment: "新手还是有难度的"
+                            },
+                            {
+                                level: "A",
+                                drops: [[95.4, 7], [4.6, 1]],
+                                comment: "难度一般"
+                            },
+                            {
+                                level: "B",
+                                drops: [[95.8, 6], [4.2, 1]],
+                                comment: "QAQ，又寄了"
+                            },
+                            {
+                                level: "C",
+                                drops: [[96.2, 5], [3.8, 1]],
+                                comment: "QAQ，又寄了"
+                            },
+                            {
+                                level: "D",
+                                drops: [[96.6, 4], [3.4, 1]],
+                                comment: "QAQ，又寄了"
+                            }
+                        ]
+                    },
+                    {
+                        diffName: "困难",
+                        needPower: "开启战力：18万，S评级建议25万以上",
+                        Drop: ["熔铸碎片【金】", "随机熔铸装备【金】"],
+                        rateList: [
+                            {
+                                level: "S",
+                                drops: [[92.5, 12], [7.5, 1]],
+                                comment: "还是有难度的"
+                            },
+                            {
+                                level: "A",
+                                drops: [[93.5, 11], [6.5, 1]],
+                                comment: "难度一般"
+                            },
+                            {
+                                level: "B",
+                                drops: [[94.5, 9], [5.5, 1]],
+                                comment: "QAQ，又寄了"
+                            },
+                            {
+                                level: "C",
+                                drops: [[95.5, 8], [4.5, 1]],
+                                comment: "QAQ，又寄了"
+                            },
+                            {
+                                level: "D",
+                                drops: [[96.5, 8], [3.5, 1]],
+                                comment: "QAQ，又寄了（实际上，困难D和简单S掉落碎片基本上一致）"
+                            }
+                        ]
+                    }
+
+                ]
+            }
+        ];
+
+        // ========== 页面渲染函数 ==========
+        function renderCopyList() {
+            const container = document.getElementById("copyContainer");
+            let html = "";
+            copyData.forEach(copy => {
+                // 副本外层容器，标题、图片永久展示不折叠，添加class="center"
+                html += `
+                <div class="copy-box" id="${copy.id}">
+                    <div class="center copy-title">${copy.copyName}</div>
+                    <div class="copy-img-wrap center">
+                        <img src="${copy.imgSrc}" alt="${copy.copyName}">
+                    </div>
+                `;
+                // 循环渲染该副本所有开放难度
+                copy.difficultyList.forEach((diff, diffIdx) => {
+                    const foldId = `${copy.id}_diff_${diffIdx}`;
+                    html += `
+                    <div class="difficulty-item">
+                        <button class="fold-btn" data-target="${foldId}">展开【${diff.diffName}】难度详情</button>
+                        <div class="fold-content" id="${foldId}">
+                            <div class="difficulty-name">${diff.diffName}难度基础要求</div>
+                            <div class="power-text color_Red">战力要求：${diff.needPower}</div>
+                            <hr>
+                            <div class="rate-wrap">
+                    `;
+                    // 循环每个评级
+                    diff.rateList.forEach(rate => {
+                        html += `<div class="rate-block">
+                            <div class="rate-title">${rate.level}评级掉落规则</div>`;
+                        // 遍历掉落配置，按Drop数组顺序拼接文本
+                        rate.drops.forEach((dropItem, idx) => {
+                            const [percent, num] = dropItem;
+                            const dropName = diff.Drop[idx];
+                            html += `<div>${percent}%概率掉落${dropName}×${num}</div>`;
+                        });
+                        html += `</div>`;
+                    });
+                    // 通关评语
+                    html += `
+                            </div>
+                            <div class="comment-text">
+                                <strong>通关评语：</strong>${diff.rateList[0].comment}
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                });
+                html += `</div><br>`;
+            });
+            container.innerHTML = html;
+            bindFoldEvent();
+        }
+        // ==========放回上一页==========
+        function goBack() {
+            window.history.back();
+        }
+
+        // ========== 折叠面板点击交互 ==========
+        function bindFoldEvent() {
+            const btns = document.querySelectorAll(".fold-btn");
+            btns.forEach(btn => {
+                btn.onclick = function () {
+                    const targetId = this.dataset.target;
+                    const targetDom = document.getElementById(targetId);
+                    targetDom.classList.toggle("show");
+                    const diffName = targetId.split("_diff_")[1];
+                    if(targetDom.classList.contains("show")){
+                        this.innerText = `收起【${diff.diffName}】难度详情`;
+                    }else{
+                        this.innerText = `展开【${diff.diffName}】难度详情`;
+                    }
+                }
+            })
+        }
+
+        window.onload = renderCopyList;
+    </script>
+</body>
+</html>
